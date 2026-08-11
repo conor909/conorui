@@ -1,0 +1,143 @@
+@use "../../styles/tokens" as t;
+
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(t.$section-pad-y + 3rem) 0 t.$section-pad-y;
+}
+
+.inner {
+  @include t.container;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-6;
+}
+
+.hudRow {
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  @include t.hud-label;
+}
+
+.hudDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: t.$color-accent;
+  box-shadow: 0 0 0 3px t.$color-accent-soft;
+}
+
+.hudLine {
+  flex: 1;
+  height: 1px;
+  background: t.$color-line-strong;
+  max-width: 12rem;
+}
+
+.titleBlock {
+  padding: t.$space-6 0;
+  border-top: 1px solid t.$color-line;
+  border-bottom: 1px solid t.$color-line;
+}
+
+.name {
+  font-size: t.$fs-h1;
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -5px;
+  color: t.$color-ink;
+}
+
+.credential {
+  display: inline-block;
+  margin-left: t.$space-3;
+  font-family: t.$font-sans;
+  font-size: clamp(0.8rem, 0.6rem + 0.6vw, 1.15rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  vertical-align: super;
+  color: t.$color-ink-faint;
+}
+
+.role {
+  margin-top: t.$space-4;
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  font-family: t.$font-mono;
+  font-size: clamp(0.85rem, 0.7rem + 0.5vw, 1.05rem);
+  letter-spacing: 0.04em;
+  color: t.$color-accent-strong;
+}
+
+.roleBracket {
+  color: t.$color-ink-faint;
+}
+
+.tagline {
+  max-width: 34rem;
+  font-family: t.$font-serif;
+  font-style: italic;
+  font-size: t.$fs-lead;
+  font-weight: 400;
+  color: t.$color-ink-soft;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-6;
+  @include t.hud-label;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-1;
+}
+
+.metaLabel {
+  color: t.$color-ink-faint;
+}
+
+.metaValue {
+  font-family: t.$font-sans;
+  font-size: t.$fs-body;
+  letter-spacing: normal;
+  text-transform: none;
+  color: t.$color-ink;
+}
+
+.scrollCue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: t.$space-6;
+  display: flex;
+  justify-content: center;
+  @include t.hud-label;
+  gap: t.$space-2;
+  align-items: center;
+}
+
+.scrollCueLine {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, t.$color-accent, transparent);
+}
+
+@include t.until-tablet {
+  .hero {
+    min-height: auto;
+    padding-top: calc(t.$section-pad-y + 4.5rem);
+  }
+
+  .scrollCue {
+    display: none;
+  }
+}

@@ -1,0 +1,115 @@
+@use "../../styles/tokens" as t;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-3;
+  padding: t.$space-4 clamp(1.25rem, 4vw, 3rem);
+  background: rgba(252, 252, 251, 0.72);
+  backdrop-filter: blur(10px) saturate(120%);
+  border-bottom: 1px solid t.$color-line;
+
+  @include t.until-tablet {
+    padding: t.$space-3 t.$space-4;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: t.$fs-hud;
+  letter-spacing: t.$tracking-hud;
+  color: t.$color-ink;
+  white-space: nowrap;
+}
+
+.brandMark {
+  color: t.$color-accent;
+}
+
+.brandShort {
+  display: none;
+}
+
+@include t.until-tablet {
+  .brandFull {
+    display: none;
+  }
+
+  .brandShort {
+    display: inline;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(0.15rem, 1.2vw, 1rem);
+}
+
+.link {
+  position: relative;
+  padding: t.$space-2 t.$space-3;
+  font-family: t.$font-mono;
+  font-size: t.$fs-hud;
+  letter-spacing: t.$tracking-hud;
+  text-transform: uppercase;
+  color: t.$color-ink-soft;
+  border-radius: t.$radius-sm;
+  transition: color t.$dur-fast t.$ease-hud;
+
+  @include t.until-tablet {
+    padding: t.$space-1 t.$space-2;
+  }
+}
+
+.link:hover {
+  color: t.$color-ink;
+}
+
+.linkActive {
+  color: t.$color-ink;
+}
+
+.linkActive::after {
+  content: "";
+  position: absolute;
+  left: t.$space-3;
+  right: t.$space-3;
+  bottom: 2px;
+  height: 1px;
+  background: t.$color-accent;
+
+  @include t.until-tablet {
+    left: t.$space-2;
+    right: t.$space-2;
+  }
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 31;
+  height: 2px;
+  background: t.$color-line;
+  transform-origin: left;
+}
+
+.progressFill {
+  height: 100%;
+  background: t.$color-accent;
+  transform-origin: left;
+  will-change: transform;
+}

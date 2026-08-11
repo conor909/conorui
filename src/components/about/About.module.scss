@@ -1,0 +1,96 @@
+@use "../../styles/tokens" as t;
+
+.about {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: t.$section-pad-y 0;
+}
+
+.inner {
+  @include t.container;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-7;
+
+  @include t.from-desktop {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: start;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+}
+
+.hudLabel {
+  @include t.hud-label;
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.heading {
+  font-size: t.$fs-h2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: t.$color-ink;
+}
+
+.lead {
+  font-family: t.$font-serif;
+  font-style: italic;
+  font-size: t.$fs-lead;
+  font-weight: 400;
+  line-height: 1.4;
+  color: t.$color-ink-soft;
+  max-width: 28rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-3;
+  margin-top: t.$space-4;
+}
+
+.chip {
+  @include t.corner-brackets(8px, t.$color-line-strong);
+  padding: t.$space-2 t.$space-4;
+  font-family: t.$font-mono;
+  font-size: t.$fs-hud;
+  letter-spacing: 0.06em;
+  color: t.$color-ink;
+  background: t.$color-surface;
+  border: 1px solid t.$color-line;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-5;
+  padding-top: t.$space-2;
+
+  @include t.from-desktop {
+    border-left: 1px solid t.$color-line;
+    padding-left: t.$space-7;
+  }
+}
+
+.paragraph {
+  font-family: t.$font-serif;
+  font-size: t.$fs-body;
+  line-height: 1.65;
+  color: t.$color-ink-soft;
+  max-width: 40rem;
+}
+
+.paragraph strong {
+  color: t.$color-ink;
+  font-weight: 500;
+}

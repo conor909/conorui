@@ -1,0 +1,129 @@
+// ---------------------------------------------------------------------------
+// Design tokens — "paper-white spaceship HUD" visual language.
+// Light background, one accent color, thin geometric type, generous space.
+// ---------------------------------------------------------------------------
+
+// Color -----------------------------------------------------------------
+$color-paper: #fcfcfb;
+$color-paper-dim: #f4f5f7;
+$color-surface: #ffffff;
+$color-ink: #0c0d10;
+$color-ink-soft: #4a4d55;
+$color-ink-faint: #8a8d96;
+$color-line: rgba(12, 13, 16, 0.1);
+$color-line-strong: rgba(12, 13, 16, 0.18);
+$color-accent: #a3231c;
+$color-accent-soft: rgba(163, 35, 28, 0.12);
+$color-accent-strong: #7a1a15;
+
+// Type --------------------------------------------------------------------
+$font-sans: var(--font-geist-sans), "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: var(--font-geist-mono), "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+$font-serif: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+
+$fs-hud: clamp(0.65rem, 0.55rem + 0.2vw, 0.75rem);
+$fs-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+$fs-lead: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+$fs-h3: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+$fs-h2: clamp(2rem, 1.5rem + 2vw, 3rem);
+$fs-h1: clamp(2.6rem, 1.8rem + 5vw, 5.4rem);
+
+$tracking-hud: 0.16em;
+$tracking-tight: -0.01em;
+
+// Spacing -------------------------------------------------------------------
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-7: 3rem;
+$space-8: 4.5rem;
+$space-9: 7rem;
+
+// Layout ----------------------------------------------------------------
+$content-max: 74rem;
+$radius-sm: 2px;
+$radius-md: 6px;
+$section-pad-y: clamp(4.5rem, 6vw + 2rem, 8rem);
+
+// Breakpoints -------------------------------------------------------------
+$bp-mobile: 480px;
+$bp-tablet: 760px;
+$bp-desktop: 1120px;
+$bp-wide: 1440px;
+
+@mixin from-tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin from-desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin from-wide {
+  @media (min-width: $bp-wide) {
+    @content;
+  }
+}
+
+@mixin until-tablet {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+// Motion --------------------------------------------------------------------
+$ease-hud: cubic-bezier(0.16, 1, 0.3, 1);
+$dur-fast: 0.2s;
+$dur-med: 0.45s;
+$dur-slow: 0.9s;
+
+// Shared HUD accents ----------------------------------------------------
+@mixin hud-label {
+  font-family: $font-mono;
+  font-size: $fs-hud;
+  letter-spacing: $tracking-hud;
+  text-transform: uppercase;
+  color: $color-ink-faint;
+}
+
+@mixin corner-brackets($size: 10px, $color: $color-line-strong) {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: $size;
+    height: $size;
+    border: 1px solid $color;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $content-max;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}

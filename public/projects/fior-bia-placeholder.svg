@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Fior Bia placeholder image">
+  <rect width="640" height="400" fill="#fcfcfb"/>
+  <rect x="0.5" y="0.5" width="639" height="399" fill="none" stroke="rgba(12,13,16,0.12)"/>
+  <g stroke="rgba(12,13,16,0.08)" stroke-width="1">
+    <line x1="0" y1="100" x2="640" y2="100"/>
+    <line x1="0" y1="300" x2="640" y2="300"/>
+    <line x1="160" y1="0" x2="160" y2="400"/>
+    <line x1="480" y1="0" x2="480" y2="400"/>
+  </g>
+  <g transform="translate(320,180)">
+    <circle r="64" fill="none" stroke="#2b5fff" stroke-width="1.5"/>
+    <circle r="46" fill="none" stroke="#2b5fff" stroke-width="1"/>
+    <path d="M -20 -8 L 0 -34 L 20 -8" fill="none" stroke="#2b5fff" stroke-width="1.5"/>
+    <line x1="0" y1="-34" x2="0" y2="28" stroke="#2b5fff" stroke-width="1.5"/>
+  </g>
+  <text x="320" y="272" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, monospace" font-size="13" letter-spacing="2" fill="rgba(12,13,16,0.55)">FIOR BIA — IMAGE PLACEHOLDER</text>
+</svg>
