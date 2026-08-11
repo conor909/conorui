@@ -62,10 +62,29 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("SendGrid send failed:", error);
-    return NextResponse.json({ ok: false, error: "Could not send message. Please try again later." }, { status: 502 });
+    // SendGrid's error body describes *why* (e.g. unverified sender, bad key
+    // scope) and never contains the key itself, so it's safe to surface —
+    // much faster to debug from the form than digging through host logs.
+    const detail = extractSendGridMessage(error);
+    const baseMessage = "Could not send message. Please try again later.";
+    return NextResponse.json({ ok: false, error: detail ? `${baseMessage} (${detail})` : baseMessage }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });
+}
+
+function extractSendGridMessage(error: unknown): string | null {
+  if (typeof error !== "object" || error === null || !("response" in error)) return null;
+  const response = (error as { response?: unknown }).response;
+  if (typeof response !== "object" || response === null || !("body" in response)) return null;
+  const body = (response as { body?: unknown }).body;
+  if (typeof body !== "object" || body === null || !("errors" in body)) return null;
+  const errors = (body as { errors?: unknown }).errors;
+  if (!Array.isArray(errors) || errors.length === 0) return null;
+  return errors
+    .map((entry) => (typeof entry === "object" && entry !== null && "message" in entry ? String((entry as { message?: unknown }).message) : null))
+    .filter((entry): entry is string => !!entry)
+    .join("; ") || null;
 }
 
 function escapeHtml(value: string): string {

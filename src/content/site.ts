@@ -67,18 +67,18 @@ export const site: SiteContent = {
     name: "Conor McGrath",
     credential: "BA Hons",
     role: "Lead Software Developer",
-    tagline: "I build user interfaces and systems that people enjoy to use, developers enjoy to maintain, and teams ship fast.",
+    tagline: "I build user interfaces and systems that people enjoy to use, developers enjoy to maintain, and teams ship quickly.",
     location: "Dublin",
     website: "conor-ui.com",
   },
   bio: {
     lead: "I'm a Lead Software Developer with 15+ years shipping production front-end and full-stack systems, several of those as an independent contractor across consultancies and enterprise teams that needed to move fast without breaking things.",
     paragraphs: [
-      "I've worked across consultancies and in-house engineering teams: Nearform, BAE Systems Applied Intelligence, Aventus/Homelyfe, cube19, Virgin Media/O2, Aer Lingus, EY, and Renalytix, plus a government digital-services engagement in Saudi Arabia. That's taken me through fintech, telecoms, aviation, healthtech, and public-sector work.",
-      "What ties it together is depth across the stack: React and React Native on the front end, Node and Python on the back end, with a focus on data visualization and, more recently, agentic AI systems. I build tools that reason over data rather than just render it.",
+      "I've worked across consultancies and in-house engineering teams: Nearform, BAE Systems (Applied Intelligence Labs), Aventus/Homelyfe, cube19, Virgin Media/O2, Aer Lingus, EY, and Renalytix, plus a government digital-services engagement in Saudi Arabia. That's taken me through fintech, telecoms, aviation, healthtech, and public-sector work.",
+      "What ties it together is depth across the stack: React and React Native on the front end, Node and Python on the back end. I build tools that reason over data rather than just render it.",
       "Outside of client work, I build and ship my own products end-to-end, from idea to app store, holding them to the same standard as everything I do for clients.",
     ],
-    highlights: ["React / React Native", "Node.js / Python", "Data visualization", "Agentic AI systems"],
+    highlights: ["React / React Native", "Node.js / Python", "Design", "Data Visualization", "Agentic AI's"],
   },
   clients: [
     {
