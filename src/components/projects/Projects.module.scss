@@ -79,6 +79,19 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(1);
+  transition: filter t.$dur-med t.$ease-hud;
+}
+
+.card:hover .thumb img,
+.card:focus-within .thumb img {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb img {
+    transition: none;
+  }
 }
 
 .status {

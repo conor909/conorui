@@ -25,7 +25,7 @@ export default function ClientLogos({ reducedMotion }: ClientLogosProps) {
       <motion.div className={styles.hudLabel} variants={item}>
         <span>WORKED WITH</span>
       </motion.div>
-      <motion.div className={styles.row} variants={item}>
+      <motion.div className={`${styles.row} ${visible ? styles.revealed : ""}`} variants={item}>
         {site.clients.map((client) => (
           <div key={client.name} className={styles.logo} title={client.name}>
             <Image
