@@ -72,7 +72,7 @@ export const site: SiteContent = {
     website: "conor-ui.com",
   },
   bio: {
-    lead: "I'm a Lead Software Developer with 15+ years shipping production front-end and full-stack systems, several of those as an independent contractor across consultancies and enterprise teams that needed to move fast without breaking things.",
+    lead: "I'm a Lead Software Developer with 15+ years shipping production front-end and full-stack systems, several of those as an independent contractor across consultancies and enterprise teams where reliability mattered as much as speed.",
     paragraphs: [
       "I've worked across consultancies and in-house engineering teams, with Nearform, Aer Lingus, EY (Ernst & Young), Virgin Media O2, BAE Systems (Applied Intelligence Labs), Renalytix, Aventus/Homelyfe, cube19,  plus a government finance engagement in Saudi Arabia. That's taken me through fintech, telecoms, aviation, healthtech, and public-sector work.",
       "What ties it together is depth across the stack: React and React Native on the front end, Node and Python on the back end. I'm hands-on as both developer and tech lead — owning architecture decisions and staying in the code, not just directing from above.",
