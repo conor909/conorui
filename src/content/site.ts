@@ -67,7 +67,7 @@ export const site: SiteContent = {
     name: "Conor McGrath",
     credential: "BA Hons",
     role: "Lead Software Developer",
-    tagline: "I build user interfaces and systems that people enjoy to use, developers enjoy to maintain, and teams ship quickly.",
+    tagline: "I build user interfaces and systems that people enjoy to use, developers enjoy to maintain, and teams can ship quickly.",
     location: "Dublin, Ireland",
     website: "conor-ui.com",
   },
