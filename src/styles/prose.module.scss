@@ -127,3 +127,20 @@
   border: 1px solid t.$color-line;
   border-radius: t.$radius-md;
 }
+
+.figure {
+  margin: t.$space-6 0 0;
+
+  .img {
+    margin-top: 0;
+  }
+}
+
+.caption {
+  margin-top: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: t.$color-ink-faint;
+  text-align: center;
+}

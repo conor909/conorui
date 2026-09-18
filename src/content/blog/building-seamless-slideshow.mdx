@@ -1,3 +1,5 @@
+import prose from "@/styles/prose.module.scss";
+
 export const meta = {
   title: "Shipping with AI: From scratch to production",
   description:
@@ -12,6 +14,13 @@ how fast can a real, paid product go from idea to production? [Seamless
 Slideshow](https://seamless-slideshow.com) was the experiment, an app that
 crops batches of photos into swipeable carousels for TikTok and Instagram,
 built in spare time over the course of a week.
+
+<figure className={prose.figure}>
+  <a href="https://seamless-slideshow.com">
+    <img src="/blog-posts/seamless-slideshow.png" alt="Seamless Slideshow landing page: turn 1 photo into a seamless slideshow" loading="lazy" className={prose.img} />
+  </a>
+  <figcaption className={prose.caption}>A mediocre Google Ad image generated to the correct specs by Claude Design</figcaption>
+</figure>
 
 The constraint I set myself was to use AI end to end: architecture, code,
 copy, even the ad creative, and see how much of the plumbing I could hand

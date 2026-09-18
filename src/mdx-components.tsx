@@ -1,5 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import Image, { type ImageProps } from "next/image";
 import prose from "@/styles/prose.module.scss";
 
 // Maps markdown-generated elements in every .mdx article body to the site's
@@ -22,15 +21,12 @@ const components: MDXComponents = {
   code: ({ children }) => <code className={prose.code}>{children}</code>,
   pre: ({ children }) => <pre className={prose.pre}>{children}</pre>,
   hr: () => <hr className={prose.hr} />,
-  img: ({ alt, ...props }) => (
-    <Image
-      alt={alt ?? ""}
-      sizes="(min-width: 760px) 720px, 100vw"
-      className={prose.img}
-      style={{ width: "100%", height: "auto" }}
-      {...(props as Omit<ImageProps, "alt">)}
-    />
-  ),
+  // Markdown images don't carry known intrinsic dimensions, which next/image
+  // requires (width/height or fill), so this uses a plain <img> instead.
+  // eslint-disable-next-line @next/next/no-img-element
+  img: ({ alt, ...props }) => <img alt={alt ?? ""} loading="lazy" className={prose.img} {...props} />,
+  figure: ({ children }) => <figure className={prose.figure}>{children}</figure>,
+  figcaption: ({ children }) => <figcaption className={prose.caption}>{children}</figcaption>,
 };
 
 export function useMDXComponents(): MDXComponents {
