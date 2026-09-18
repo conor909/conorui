@@ -65,8 +65,8 @@ export default function Hero() {
             <span className={styles.metaValue}>{site.contact.links.find((l) => l.type === "email")?.label}</span>
           </span>
           <span className={styles.metaItem}>
-            <span className={styles.metaLabel}>WEB</span>
-            <span className={styles.metaValue}>{site.profile.website}</span>
+            <span className={styles.metaLabel}>LINKEDIN</span>
+            <span className={styles.metaValue}>{site.contact.links.find((l) => l.type === "linkedin")?.label}</span>
           </span>
         </motion.div>
       </div>
