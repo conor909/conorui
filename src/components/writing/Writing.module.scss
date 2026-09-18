@@ -1,0 +1,151 @@
+@use "../../styles/tokens" as t;
+
+.writing {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: t.$section-pad-y 0;
+}
+
+.inner {
+  @include t.container;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-7;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.hudLabel {
+  @include t.hud-label;
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.heading {
+  font-size: t.$fs-h2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: t.$color-ink;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-6;
+
+  @include t.from-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  @include t.corner-brackets(12px, t.$color-line-strong);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid t.$color-line;
+  background: t.$color-surface;
+  border-radius: t.$radius-md;
+  overflow: hidden;
+  transition: border-color t.$dur-med t.$ease-hud, transform t.$dur-med t.$ease-hud;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: t.$color-line-strong;
+  transform: translateY(-3px);
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: t.$color-paper-dim;
+  border-bottom: 1px solid t.$color-line;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+  transition: filter t.$dur-med t.$ease-hud;
+}
+
+.card:hover .thumb img,
+.card:focus-within .thumb img {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb img {
+    transition: none;
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+  padding: t.$space-5;
+  flex: 1;
+}
+
+.meta {
+  @include t.hud-label;
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  flex-wrap: wrap;
+}
+
+.tag:not(:last-child)::after {
+  content: "/";
+  margin-left: t.$space-2;
+  color: t.$color-line-strong;
+}
+
+.cardTitle {
+  font-size: t.$fs-h3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: t.$color-ink;
+}
+
+.cardDescription {
+  font-family: t.$font-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: t.$color-ink-soft;
+  flex: 1;
+}
+
+.cardLink {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: t.$space-1 t.$space-3;
+  font-family: t.$font-mono;
+  font-size: 0.65rem;
+  letter-spacing: t.$tracking-hud;
+  text-transform: uppercase;
+  color: t.$color-surface;
+  background: t.$color-ink;
+  border-radius: t.$radius-sm;
+  transition: background t.$dur-fast t.$ease-hud;
+}
+
+.card:hover .cardLink,
+.card:focus-within .cardLink {
+  background: t.$color-accent-strong;
+}

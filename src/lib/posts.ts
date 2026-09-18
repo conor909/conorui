@@ -9,6 +9,8 @@ export type PostMeta = {
   /** ISO date string, e.g. "2026-08-20" */
   date: string;
   tags?: string[];
+  /** Cover image path, e.g. "/blog/building-fior-bia.png". Omit if none yet. */
+  image?: string;
 };
 
 export type Post = PostMeta & { slug: string };

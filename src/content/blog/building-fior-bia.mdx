@@ -1,0 +1,33 @@
+export const meta = {
+  title: "Shipping with AI: Fíor Bia",
+  description:
+    "Same experiment, harder surface: taking a native mobile app from idea to the app stores in a couple of days, with React Native, an AI backend, and app store review in the mix.",
+  date: "2026-09-18",
+  tags: ["Side project", "AI", "React Native"],
+  image: "/projects/fior-bia.png",
+};
+
+[Fíor Bia](https://www.fiorbia.com/) followed the same constraint as
+[Seamless Slideshow](/blog/building-seamless-slideshow): use AI tools end to
+end and see how fast a real product can go from idea to live. This time on a
+harder surface, a native mobile app, with a goal of landing on both app
+stores within a couple of days.
+
+The app itself is simple to describe: scan a product's barcode and it tells
+you how processed the ingredients actually are.
+
+## The stack
+
+React Native handles the app itself, the scanner, product view, and result
+screen. Behind it, a Node API (built on Next.js) does two things: looks up
+the scanned barcode against a public food database API to pull the
+ingredient list, then sends that list to Claude, which classifies how
+processed the product is and returns a plain-language explanation.
+
+## Getting to the app stores
+
+Shipping a web app ends when you deploy. Shipping a mobile app ends when
+Apple and Google say yes, two separate review processes with their own
+guidelines and turnaround times. Hitting a couple of days meant treating
+store submission as part of the build from day one instead of something to
+figure out after the app was "done." Claude for Chrome was great for helping get information from the apps codebase to App Store connect and Google Play console, which can be a time-consuming process.

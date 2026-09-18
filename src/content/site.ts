@@ -105,7 +105,7 @@ export const site: SiteContent = {
   projects: [
     {
       slug: "fior-bia",
-      name: "Fior Bia",
+      name: "Fíor Bia",
       description:
         "A food barcode scanner app for iOS and Android that helps people understand how their food is really made. Scan a product to see how processed its ingredients are.",
       platforms: ["iOS", "Android"],
@@ -117,7 +117,7 @@ export const site: SiteContent = {
     {
       slug: "one-ocean-network",
       name: "One Ocean Network",
-      description: "A mobile app for real-time ocean and coastline weather with a social layer for sharing conditions and reports.",
+      description: "A mobile app for real-time ocean and coastline weather with a social layer for sharing conditions and reports. No AI was used in the making of these apps.",
       platforms: ["iOS", "Android"],
       status: "Live",
       tags: ["React Native"],
