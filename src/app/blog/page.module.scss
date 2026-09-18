@@ -1,0 +1,42 @@
+@use "../../styles/tokens" as t;
+
+.page {
+  padding: t.$space-8 0;
+}
+
+.inner {
+  @include t.container;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-7;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.hudLabel {
+  @include t.hud-label;
+}
+
+.heading {
+  font-size: t.$fs-h2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: t.$color-ink;
+}
+
+.lead {
+  max-width: 40rem;
+  font-family: t.$font-serif;
+  font-size: t.$fs-lead;
+  line-height: 1.6;
+  color: t.$color-ink-soft;
+}
+
+.empty {
+  @include t.hud-label;
+  padding: t.$space-8 0;
+}

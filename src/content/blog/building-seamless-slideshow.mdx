@@ -1,0 +1,43 @@
+export const meta = {
+  title: "Shipping with AI: From scratch to production",
+  description:
+    "An experiment in speed: how far AI tooling can take a token-based, paid app from idea to production, with Next.js, Python, Stripe, Google Ads, and Firebase, end to end.",
+  date: "2026-09-18",
+  tags: ["Side project", "AI", "Next.js"],
+};
+
+I wanted to answer a specific question: with AI tools doing the heavy lifting,
+how fast can a real, paid product go from idea to production? [Seamless
+Slideshow](https://seamless-slideshow.com) was the experiment, an app that
+crops batches of photos into swipeable carousels for TikTok and Instagram,
+built in spare time over the course of a week.
+
+The constraint I set myself was to use AI end to end: architecture, code,
+copy, even the ad creative, and see how much of the plumbing I could hand
+off while I focused on decisions and wiring things together.
+
+## The stack
+
+Claude Code for coding and Claude for Chrome to sync up with Google Ads and Stripe.
+
+Next.js hosted to Vercel drives the frontend upload flow, the interactive cropping UI,
+and the API routes tying everything together. The image processing itself
+(cropping, resizing, batch export) runs in a separate Python service hosted on Heroku.
+
+Firebase handles the parts I didn't want to build myself: Authentication for
+sign-in, and Firestore for storing user and job data, including a
+token-based credit system: Stripe sells batches of tokens, and Firestore
+tracks how many each user has left as they export. Analytics tracks how
+people actually move through the app, and a Google Ads
+campaign sending real traffic to it, so it's real usage against a real
+product, not a mockup.
+
+## The outcome
+
+Spare-time work spread across evenings makes it hard to point to an exact
+hour count, but having done it once, I'm confident a similar idea could go
+from scratch to production in a day or two, provided market research and any other pre-development work has been done.
+
+The initial iteration, within 2 weeks had over 300 people sign up, and made $78 in real payments. Analytics worked well and discovered some bottlenecks in the flow, and the app is still live and continues to be used by people worldwide.
+
+Check it out at [www.seamless-slideshow.com](https://seamless-slideshow.com)

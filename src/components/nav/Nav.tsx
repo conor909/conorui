@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { activeSectionIndex, useSectionBoundaries } from "@/lib/scroll-progress";
 import styles from "./Nav.module.scss";
@@ -46,6 +47,9 @@ export default function Nav({ progress }: NavProps) {
               {item.label}
             </a>
           ))}
+          <Link href="/blog" className={styles.link}>
+            Blog
+          </Link>
         </div>
       </nav>
     </>

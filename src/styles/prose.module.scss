@@ -1,0 +1,129 @@
+@use "./tokens" as t;
+
+// Typographic rhythm for long-form MDX article bodies. Mirrors the site's
+// existing type system (serif for reading copy, mono for HUD accents)
+// rather than introducing a separate "blog" visual language.
+
+.h2 {
+  margin-top: t.$space-8;
+  font-family: t.$font-sans;
+  font-size: t.$fs-h3;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  color: t.$color-ink;
+}
+
+.h3 {
+  margin-top: t.$space-7;
+  font-family: t.$font-sans;
+  font-size: t.$fs-lead;
+  font-weight: 600;
+  letter-spacing: t.$tracking-tight;
+  color: t.$color-ink;
+}
+
+.h4 {
+  margin-top: t.$space-6;
+  @include t.hud-label;
+}
+
+.p {
+  margin-top: t.$space-5;
+  font-family: t.$font-serif;
+  font-size: t.$fs-lead;
+  line-height: 1.7;
+  color: t.$color-ink-soft;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.ul,
+.ol {
+  margin-top: t.$space-5;
+  padding-left: t.$space-6;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+  font-family: t.$font-serif;
+  font-size: t.$fs-lead;
+  line-height: 1.7;
+  color: t.$color-ink-soft;
+}
+
+.ul {
+  list-style: disc;
+}
+
+.ol {
+  list-style: decimal;
+}
+
+.li {
+  padding-left: t.$space-1;
+}
+
+.a {
+  color: t.$color-accent-strong;
+  text-decoration: underline;
+  text-decoration-color: t.$color-accent-soft;
+  text-underline-offset: 3px;
+  transition: text-decoration-color t.$dur-fast t.$ease-hud;
+
+  &:hover {
+    text-decoration-color: t.$color-accent-strong;
+  }
+}
+
+.blockquote {
+  margin-top: t.$space-6;
+  padding-left: t.$space-5;
+  border-left: 2px solid t.$color-accent-soft;
+  font-family: t.$font-serif;
+  font-style: italic;
+  font-size: t.$fs-lead;
+  color: t.$color-ink-soft;
+}
+
+.code {
+  padding: 0.15em 0.4em;
+  font-family: t.$font-mono;
+  font-size: 0.85em;
+  color: t.$color-accent-strong;
+  background: t.$color-accent-soft;
+  border-radius: t.$radius-sm;
+}
+
+.pre {
+  margin-top: t.$space-6;
+  padding: t.$space-5;
+  overflow-x: auto;
+  font-family: t.$font-mono;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: t.$color-ink;
+  background: t.$color-paper-dim;
+  border: 1px solid t.$color-line;
+  border-radius: t.$radius-md;
+
+  .code {
+    padding: 0;
+    color: inherit;
+    background: none;
+  }
+}
+
+.hr {
+  margin-top: t.$space-8;
+  border: none;
+  border-top: 1px solid t.$color-line;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  margin-top: t.$space-6;
+  border: 1px solid t.$color-line;
+  border-radius: t.$radius-md;
+}

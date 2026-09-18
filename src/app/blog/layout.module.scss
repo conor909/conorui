@@ -1,0 +1,48 @@
+@use "../../styles/tokens" as t;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-4;
+  padding: t.$space-4 clamp(1.25rem, 4vw, 3rem);
+  background: rgba(252, 252, 251, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid t.$color-line;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  font-family: t.$font-mono;
+  font-size: t.$fs-hud;
+  font-weight: 500;
+  letter-spacing: t.$tracking-hud;
+  color: t.$color-ink;
+}
+
+.brandMark {
+  color: t.$color-accent;
+}
+
+.blogLink {
+  @include t.hud-label;
+  padding: t.$space-2 t.$space-3;
+  border: 1px solid t.$color-line-strong;
+  border-radius: t.$radius-sm;
+  transition: border-color t.$dur-fast t.$ease-hud, color t.$dur-fast t.$ease-hud;
+
+  &:hover {
+    color: t.$color-accent-strong;
+    border-color: t.$color-accent-strong;
+  }
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+}
