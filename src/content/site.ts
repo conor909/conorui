@@ -151,12 +151,6 @@ export const site: SiteContent = {
         type: "linkedin",
         hud: "LINKEDIN",
       },
-      {
-        label: "conor-ui.com",
-        href: "https://conor-ui.com",
-        type: "website",
-        hud: "WEB",
-      },
     ],
   },
   nav: [
