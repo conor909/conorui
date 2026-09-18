@@ -4,7 +4,7 @@ import BlogGrid from "@/components/blog/BlogGrid";
 import styles from "./page.module.scss";
 
 const title = "Blog";
-const description = "Writing on front-end engineering, data visualization, and the occasional side project.";
+const description = "Notes on building products and writing software.";
 
 export const metadata: Metadata = {
   title,
@@ -35,10 +35,7 @@ export default async function BlogIndexPage() {
       <div className={styles.inner}>
         <div className={styles.header}>
           <span className={styles.hudLabel}>— BLOG</span>
-          <h1 className={styles.heading}>Writing &amp; visualizations</h1>
-          <p className={styles.lead}>
-            Notes on front-end engineering and data visualization.
-          </p>
+          <h1 className={styles.heading}>Notes on building products and writing software</h1>
         </div>
 
         {posts.length > 0 ? (
