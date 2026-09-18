@@ -10,7 +10,7 @@ const SWAP_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /**
  * Contact form: submits to POST /api/contact, which sends the message via
- * SendGrid (SENDGRID_API_KEY, server-side only). "company" is a honeypot —
+ * Resend (RESEND_API_KEY, server-side only). "company" is a honeypot —
  * hidden from real users via CSS, so a filled-in value flags a bot.
  */
 export default function Contact() {

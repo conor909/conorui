@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
+import { Resend } from "resend";
 import { site } from "@/content/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,48 +43,34 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Please provide a message." }, { status: 400 });
   }
 
-  const apiKey = process.env.SENDGRID_API_KEY;
+  const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error("SENDGRID_API_KEY is not set; cannot send contact form email.");
+    console.error("RESEND_API_KEY is not set; cannot send contact form email.");
     return NextResponse.json({ ok: false, error: "Email is not configured on the server." }, { status: 500 });
   }
 
-  sgMail.setApiKey(apiKey);
+  const resend = new Resend(apiKey);
 
-  try {
-    await sgMail.send({
-      to: recipient,
-      from: recipient,
-      replyTo: email,
-      subject: `Portfolio contact form: ${name}`,
-      text: `From: ${name} <${email}>\n\n${message}`,
-      html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p><p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>`,
-    });
-  } catch (error) {
-    console.error("SendGrid send failed:", error);
-    // SendGrid's error body describes *why* (e.g. unverified sender, bad key
-    // scope) and never contains the key itself, so it's safe to surface —
-    // much faster to debug from the form than digging through host logs.
-    const detail = extractSendGridMessage(error);
+  const { error } = await resend.emails.send({
+    to: recipient,
+    from: recipient,
+    replyTo: email,
+    subject: `Portfolio contact form: ${name}`,
+    text: `From: ${name} <${email}>\n\n${message}`,
+    html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p><p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>`,
+  });
+
+  if (error) {
+    console.error("Resend send failed:", error);
+    // Resend's error message describes *why* (e.g. unverified sender domain,
+    // bad key scope) and never contains the key itself, so it's safe to
+    // surface — much faster to debug from the form than digging through host
+    // logs.
     const baseMessage = "Could not send message. Please try again later.";
-    return NextResponse.json({ ok: false, error: detail ? `${baseMessage} (${detail})` : baseMessage }, { status: 502 });
+    return NextResponse.json({ ok: false, error: error.message ? `${baseMessage} (${error.message})` : baseMessage }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });
-}
-
-function extractSendGridMessage(error: unknown): string | null {
-  if (typeof error !== "object" || error === null || !("response" in error)) return null;
-  const response = (error as { response?: unknown }).response;
-  if (typeof response !== "object" || response === null || !("body" in response)) return null;
-  const body = (response as { body?: unknown }).body;
-  if (typeof body !== "object" || body === null || !("errors" in body)) return null;
-  const errors = (body as { errors?: unknown }).errors;
-  if (!Array.isArray(errors) || errors.length === 0) return null;
-  return errors
-    .map((entry) => (typeof entry === "object" && entry !== null && "message" in entry ? String((entry as { message?: unknown }).message) : null))
-    .filter((entry): entry is string => !!entry)
-    .join("; ") || null;
 }
 
 function escapeHtml(value: string): string {
