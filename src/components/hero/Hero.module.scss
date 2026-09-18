@@ -113,6 +113,15 @@
   color: t.$color-ink;
 }
 
+.metaLink {
+  transition: color t.$dur-fast t.$ease-hud;
+}
+
+.metaLink:hover,
+.metaLink:focus-visible {
+  color: t.$color-accent-strong;
+}
+
 .scrollCue {
   position: absolute;
   left: 0;

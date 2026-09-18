@@ -8,6 +8,8 @@ import styles from "./Hero.module.scss";
 export default function Hero() {
   const reducedMotion = useReducedMotion();
   const variants = reducedMotion ? fadeOnly : fadeUp;
+  const emailLink = site.contact.links.find((l) => l.type === "email");
+  const linkedinLink = site.contact.links.find((l) => l.type === "linkedin");
 
   return (
     <section id="hero" className={styles.hero} aria-label="Introduction">
@@ -62,11 +64,18 @@ export default function Hero() {
         >
           <span className={styles.metaItem}>
             <span className={styles.metaLabel}>EMAIL</span>
-            <span className={styles.metaValue}>{site.contact.links.find((l) => l.type === "email")?.label}</span>
+            <span className={styles.metaValue}>{emailLink?.label}</span>
           </span>
           <span className={styles.metaItem}>
             <span className={styles.metaLabel}>LINKEDIN</span>
-            <span className={styles.metaValue}>{site.contact.links.find((l) => l.type === "linkedin")?.label}</span>
+            <a
+              href={linkedinLink?.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.metaValue} ${styles.metaLink}`}
+            >
+              {linkedinLink?.label}
+            </a>
           </span>
         </motion.div>
       </div>
